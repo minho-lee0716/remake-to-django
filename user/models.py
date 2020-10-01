@@ -11,3 +11,15 @@ class User(models.Model):
 
     class Meta:
         db_table='users'
+
+class UserShippingDetail(models.Model):
+    user_shipping_detail_no = models.AutoField(primary_key=True)
+    user_id                 = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    receiver                = models.CharField(max_length=50, null=True)
+    phone_number            = models.CharField(max_length=50, null=True)
+    address                 = models.CharField(max_length=500, null=True)
+    additional_address      = models.CharField(max_length=100, null=True)
+    zip_code                = models.CharField(max_length=10, null=True)
+
+    class Meta:
+        db_table='user_shipping_details'
